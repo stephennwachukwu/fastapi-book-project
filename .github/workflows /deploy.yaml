@@ -19,10 +19,10 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/tester/bookapi
-            git switch main && git pull origin main
+            cd /home/ubuntu/fastapi-book-project
+            git pull origin main
+            git reset --hard origin/main
             source venv/bin/activate
             pip install -r requirements.txt
-            sudo systemctl daemon-reload
-            sudo systemctl restart bookapi.service
+            sudo systemctl restart fastapi
             sudo systemctl restart nginx
